@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romantic 3D Monthsary Card</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe6f0, #fce4ec);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+
+  .card-container {
+    width: 500px;
+    height: 450px; /* enough height to fit message */
+    perspective: 1200px;
+    position: relative;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .door {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff8aa8, #ff4d7e);
+    border: 2px solid #ff3366;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+    z-index: 2;
+    backface-visibility: hidden;
+  }
+
+  .door.left { left: 0; transform-origin: left; }
+  .door.right { right: 0; transform-origin: right; }
+
+  .card.open .door.left { transform: rotateY(-160deg); }
+  .card.open .door.right { transform: rotateY(160deg); }
+
+  .message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%; /* occupy almost entire card */
+    background: #fff0f8;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    font-size: 16px;
+    color: #c2185b;
+    line-height: 1.5;
+    overflow-y: auto; /* scrollable */
+    box-shadow: inset 0 0 15px rgba(255,50,100,0.2);
+    opacity: 0;
+    transition: opacity 1s ease 0.8s;
+    z-index: 1;
+  }
+
+  .card.open .message { opacity: 1; }
+
+  .message h2 {
+    color: #d81b60;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="card" id="card">
+    <div class="door left">]</div>
+    <div class="door right">[</div>
+
+    <div class="message">
+      <div>
+        <h2>To My Love 💕</h2>
+        Happy 17th monthsary loviee 💖<br><br>
+        Seventeen months together, and through all the laughter, love, and memories, I know I haven’t been perfect. I want to apologize sincerely for my actions and any wrongdoings that may have hurt you. I am truly sorry, and I promise to learn, grow, and be better for you because you mean so much to me.<br><br>
+        Even with my mistakes, I am grateful that we face struggles together and come out stronger. Your love, patience, and understanding mean everything to me, and I never want to take that for granted.<br><br>
+        Thank you for being my partner, my joy, and my safe place. I look forward to creating more beautiful memories with you and continuing this journey together. I love you more than words can ever express. 💕<br><br>
+        Yours always,
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const card = document.getElementById('card');
+  const doors = document.querySelectorAll('.door');
+
+  doors.forEach(door => {
+    door.addEventListener('click', () => {
+      card.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
